@@ -9,8 +9,8 @@ const isGroqEnabled = !!process.env.GROQ_API_KEY && process.env.GROQ_API_KEY !==
 // Real-time weather data fetching
 async function getWeatherData(location: string) {
     try {
-        const apiKey = process.env.WEATHER_API_KEY;
-        if (!apiKey || apiKey === 'demo') {
+        const apiKey = process.env.WEATHER_API_KEY || process.env.VITE_WEATHER_API_KEY;
+        if (!apiKey) {
             // Mock weather data for demo
             return {
                 temp: Math.floor(Math.random() * 30) + 50,
